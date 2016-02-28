@@ -1,0 +1,25 @@
+_repo: The-Life-and-Adventures-of-Maj-Roger-Sherman-Potter_4959
+alternative_title: The Life and Adventures of Major Roger Sherman Potter
+creator:
+  author:
+    agent_name: Adams, F. Colburn (Francis Colburn)
+    aliases:
+    - Adams, Francis Colburn
+    - Pheleg Van Trusedale
+    gutenberg_agent_id: '1538'
+    url: http://www.gutenberg.org/2009/agents/1538
+    wikipedia: http://en.wikipedia.org/wiki/Francis_Colburn_Adams
+description: ''
+gutenberg_issued: '2004-01-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '4959'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'PS'
+- !lcsh 'Political fiction'
+title: The Life and Adventures of Maj. Roger Sherman Potter
+url: http://www.gutenberg.org/ebooks/4959
