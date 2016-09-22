@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: c14X1zUMg6Ws950RjJg+UWfWDNuBfo+Tmr9RTJr5WuhJN2YDTiNNh96RpFXj8EtdKEvKDGV70KfaXDN9tai2rOvlrdvpjbxhj3XmMJ0DxrMh5Y4Uk+QJN4bIrB7S3cQdzxlolDetWMqxvPuZ07KafIqO1o5LkjQbMWQRGbzqv2kHyYO04HibT+IeQEHAy27X1+x0CUZ2KAetyIsgHi6T3RMrUGueIkGAxt1RKQgVHqWn2gagIkBpf2IDLGO+lXJ+IY8mc/m73Md78yOpU1K8RouhUE1zc+OV5c1sszyks7w0niEJM4oW8vnr1J8OYARMykwTkLSnFdk0L11//uydeHT2z86BOM7LoOhIz7D9wryQ1LlBXFVkaguVXSM2Cb+mxJFCARdFvsi3TEG2t60C/yPoFABC9xDz9AALD38RyEP5g+XHJmlcdA6GcY0xRmmKoOD1Mx1ZXWNGE8oTW+8t/2uZV5393/UbLIU8AVZAf2H6O1FE3E5C5doYvb6nIzCALIZ2C5RSYOjuuqrkktVqey6FwTno5z/+WUtf/hAk1paG/KsZJphXDvSfEpHKyhi+26Ba+4bfJfcUoNwgeRIKrSBREFZg4vj3AeXRsSaZ/4IWX5VnquPfmf0EpdJcNnwhjzGC5oSAevdsEIVN16GcbedaAFEqZ9sjsVxjY+b0JNk=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Life-and-Adventures-of-Maj-Roger-Sherman-Potter_4959
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
