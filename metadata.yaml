@@ -1,6 +1,9 @@
 _repo: The-Life-and-Adventures-of-Maj-Roger-Sherman-Potter_4959
-_version: 0.1.0
+_version: 0.2.0
 alternative_title: The Life and Adventures of Major Roger Sherman Potter
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Adams, F. Colburn (Francis Colburn)
@@ -11,6 +14,8 @@ creator:
     url: http://www.gutenberg.org/2009/agents/1538
     wikipedia: http://en.wikipedia.org/wiki/Francis_Colburn_Adams
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/4959#The-Life-and-Adventures-of-Maj-Roger-Sherman-Potter
 gutenberg_issued: '2004-01-01'
 gutenberg_type: Text
 identifiers:
